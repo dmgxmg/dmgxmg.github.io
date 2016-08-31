@@ -1,0 +1,124 @@
+<div class="page navbar-fixed toolbar-fixed" data-page="tools/color-picker">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="left">
+				<a href="#" class="link back icon-only">
+            <i class="icon icon-back"></i>
+        </a>
+			</div>
+			<div class="center">颜色值转换</div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<div class="toolbar tabbar">
+		<div class="toolbar-inner">
+			<a href="#tabSpectrum" class="tab-link active">
+				选择颜色值
+			</a>
+			<a href="#tabColorInput" class="tab-link">
+				输入颜色值
+			</a>
+			<a href="#tabColorList" class="tab-link">
+				常用颜色值
+			</a>
+		</div>
+	</div>
+	<div class="page-content tabs">
+		<div id="tabSpectrum" class="tab active">
+			<div class="content-block-title">选择颜色</div>
+			<div>
+				<input type="text" v-el:spectrum>
+			</div>
+			<div class="content-block-title">颜色值</div>
+			<div class="list-block">
+				<ul>
+					<li class="item-content" v-for="item in formatList">
+						<div class="item-inner row">
+							<div class="item-title col-auto">
+								{{item.title}}
+							</div>
+							<div class="item-after col-auto">
+								{{getSpectrumColor(item.id)}}
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="tabColorInput" class="tab">
+			<div class="content-block-title">输入颜色值</div>
+			<div class="list-block">
+				<ul>
+					<li>
+						<div class="item-content">
+							<div class="item-inner">
+								<div class="item-title label">颜色值</div>
+								<div class="item-input">
+									<input type="text" v-model="colorText">
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="item-content">
+							<div class="item-inner">
+								<div class="item-title label">转换后格式</div>
+								<div class="item-input">
+									<select v-model="formatId">
+										<option v-for="item in formatList" :value="item.id">{{item.title}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="content-block-title">结果</div>
+			<div class="list-block">
+				<ul>
+					<li class="item-content">
+						<div class="item-inner row">
+							<div class="item-title col-auto" :style="{backgroundColor: backgroundColor}">&nbsp;</div>
+							<div class="item-title col-auto">
+								{{colorResult}}
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="content-block-title">支持输入的格式</div>
+			<div class="list-block">
+				<ul>
+					<li class="item-content" v-for="list in formatInputDemo">
+						<div class="item-inner row">
+							<div class="item-after col-auto" v-for="item in list">
+								{{item}}
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="tabColorList" class="tab">
+			<div class="content-block-title">常用颜色值</div>
+			<div class="list-block">
+				<ul class="text-center">
+					<li class="item-content">
+						<div class="item-inner row">
+							<div class="col-30 item-title">Color</div>
+							<div class="col-40 item-title">颜色名</div>
+							<div class="col-30 item-title">颜色值(Hex)</div>
+						</div>
+					</li>
+					<li class="item-content" v-for="item in colorList">
+						<div class="item-inner row">
+							<div class="col-30" :style="{backgroundColor: item.value}">&nbsp;</div>
+							<div class="col-40 item-title">{{item.name}}</div>
+							<div class="col-30 item-title">{{item.value}}</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

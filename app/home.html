@@ -1,0 +1,112 @@
+<div class="page navbar-fixed" data-page="app/home">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="left"></div>
+			<div class="center">DMG万事屋</div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<div class="toolbar toolbar-bottom tabbar tabrbar-labels">
+		<div class="toolbar-inner">
+			<a href="#tabHome" class="tab-link active">
+				<i class="icon ion-logo-windows"></i>
+				<span class="tabbar-label">DMG万事屋</span>
+			</a>
+			<a href="#tabLinks" class="tab-link active">
+				<i class="icon ion-md-map"></i>
+				<span class="tabbar-label">常用链接</span>
+			</a>
+			<a href="#tabSettings" class="tab-link active">
+				<i class="icon ion-md-person"></i>
+				<span class="tabbar-label">我</span>
+			</a>
+		</div>
+	</div>
+	<div class="page-content tabs">
+		<div class="tab active" id="tabHome">
+			<menu-group-item
+				v-for="item in homeMenuGroup"
+				:title="item.title"
+				:list="item.menuList">
+			</menu-group-item>
+		</div>
+		<div class="tab" id="tabLinks">
+			<menu-group-item
+				v-for="item in linkMenuGroup"
+				:title="item.title"
+				:list="item.menuList">
+			</menu-group-item>
+		</div>
+		<div class="tab" id="tabSettings">
+			<div class="content-block-title">主题设置</div>
+			<div class="list-block accordion-list">
+	      <ul>
+	        <li class="accordion-item">
+	          <a href="#" class="item-link item-content">
+              <div class="item-media">
+                <i class="icon ion-md-color-palette" :class="getRandomColorClass()"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">
+                  主题颜色
+                </div>
+                <div class="item-after">
+                	{{theme}}
+                </div>
+              </div>
+	          </a>
+	          <div class="accordion-item-content">
+	          	<div class="list-block">
+            		<ul>
+            			<li class="item-content" v-for="list in themeGroup">
+            				<div class="item-inner row">
+            					<div
+            						v-for="item in list"
+												@click="selectTheme(item)"
+            						class="item-title col-auto pointer"
+            						:class="getColomnClass(item)" >
+            						{{item}}
+            					</div>
+            				</div>
+            			</li>
+            		</ul>
+            	</div>
+	          </div>
+	        </li>
+	        <li class="accordion-item">
+	          <a href="#" class="item-link item-content">
+              <div class="item-media">
+                <i class="icon ion-md-color-wand" :class="getRandomColorClass()"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">
+                  主题模式
+                </div>
+                <div class="item-after">
+                	{{layout}}
+                </div>
+              </div>
+	          </a>
+	          <div class="accordion-item-content">
+            	<div class="list-block">
+            		<ul>
+            			<li class="item-content">
+            				<div class="item-inner row">
+            					<div
+            						v-for="item in layoutList"
+												@click="selectLayout(item)"
+            						class="item-title col-auto pointer"
+            						:class="getColomnClass(item)" >
+            						{{item}}
+            					</div>
+            				</div>
+            			</li>
+            		</ul>
+            	</div>
+            </div>
+	        </li>
+	      </ul>
+	    </div>
+		</div>
+	</div>
+</div>
