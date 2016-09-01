@@ -1,0 +1,69 @@
+<div class="page navbar-fixed" data-page="resources/music/billboard" v-cloak>
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="left">
+				<a href="#" class="link back icon-only">
+            <i class="icon icon-back"></i>
+        </a>
+			</div>
+			<div class="center">音乐资源</div>
+			<div class="right"></div>
+		</div>
+		<div class="subnavbar">
+			<div class="left">
+				<a href="#" class="link smart-select" data-page-title="选择榜单">
+					<i class="icon ion-md-pin"></i>
+					<select v-model="type" @change="onBoardTypeChange()">
+						<option :value="$key" v-for="item in billBoardTypeList">{{item}}</option>
+					</select>
+				</a>
+			</div>
+			<div class="center">{{boardTitle}}　<small>Top {{billboard.billboard_songnum}}</small></div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<div class="page-content infinite-scroll with-subnavbar hide-bars-on-scroll">
+		<div class="card" v-show="hasBoardInfo">
+			<div class="card-content">
+				<div class="card-content-inner text-center">
+					<div>
+						<img :src="billboard.pic_s210">
+					</div>
+					<h4>{{boardTitle}}</h4>
+					<p>{{billboard.comment}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="content-block-title">排行榜　{{billboard.update_date}}</div>
+		<div class="list-block media-list">
+			<ul>
+				<li v-for="item in song_list">
+					<a href="#" @click="gotoSongPage(item.song_id)" class="item-link item-content">
+						<div class="item-media">
+							<img :src="getSongAvatar(item)" alt="" style="width: 90px;">
+						</div>
+						<div class="item-inner">
+							<div class="item-title-row">
+								<div class="item-title">{{item.title}}</div>
+								<div class="item-after"># {{item.rank}}</div>
+							</div>
+							<div class="item-subtitle">
+								<span class="color-blue pointer" @click="gotoArtistPage(item.ting_uid)">{{item.author}}</span>
+							</div>
+							<div class="item-text">
+								{{item.album_title}}
+							</div>
+							<div class="item-text">
+								{{getDuration(item.file_duration)}}　{{item.style}}　{{item.language}}
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="cotent-block text-center" v-show="!isLoading">
+			<span class="color-gray" v-if="isLastPage">最后一页</span>
+			<a href="#" class="link" @click="loadData()" v-else>下一页</a>
+		</div>
+	</div>
+</div>
