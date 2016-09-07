@@ -1,14 +1,10 @@
-<div class="page navbar-fixed" data-page="resources/ionicons" v-cloak>
+<div class="page navbar-fixed" data-page="resources/ionicons/ionicons" v-cloak>
 	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="left">
-				<a href="#" class="link back icon-only">
-            <i class="icon icon-back"></i>
-        </a>
+		<navbar-inner>
+			<div class="center" slot="center">
+				Ionicons v{{info.version}} <small class="m-l">{{list.length}}图标</small>
 			</div>
-			<div class="center">Ionicons v{{info.version}} <small class="m-l">{{list.length}}图标</small></div>
-			<div class="right"></div>
-		</div>
+		</navbar-inner>
 		<div class="subnavbar">
 			<!-- Search Bar -->
 		  <form class="searchbar">

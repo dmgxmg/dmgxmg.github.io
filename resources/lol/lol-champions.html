@@ -1,0 +1,44 @@
+<div class="page navbar-fixed" data-page="resources/lol/lol-champions">
+	<div class="navbar">
+		<navbar-inner title="英雄联盟"></navbar-inner>
+		<div class="subnavbar">
+			<!-- Search Bar -->
+		  <form class="searchbar">
+		      <div class="searchbar-input">
+		          <input type="search" placeholder="Search">
+		          <a href="#" class="searchbar-clear"></a>
+		      </div>
+		      <a href="#" class="searchbar-cancel">Cancel</a>
+		  </form>
+		</div>
+	</div>
+	<!-- Search Bar overlay-->
+  <div class="searchbar-overlay"></div>
+
+	<div class="page-content with-subnavbar hide-bars-on-scroll">
+		<div class="content-block-title">所有英雄 {{championList.length}}</div>
+		<div class="content-block searchbar-not-found">Nothing found</div>
+		<div class="list-block media-list list-block-search searchbar-found">
+			<ul>
+				<li v-for="item in championList">
+					<a href="#" class="item-link item-content">
+						<div class="item-media">
+							<img :src="getChampionImage(item.image.full)" style="width: 80px;">
+						</div>
+						<div class="item-inner">
+							<div class="item-title-row">
+								<div class="item-title">{{item.name}}</div>
+								<div class="item-after">{{item.title}}</div>
+							</div>
+							<div class="item-subtitle">
+								<div class="chip m-r" v-for="tag in item.tagNames" track-by="$index">
+									<div class="chip-label">{{tag}}</div>
+								</div>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

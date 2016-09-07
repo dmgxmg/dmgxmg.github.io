@@ -1,0 +1,22 @@
+<div class="page navbar-fixed" data-page="app/app-panel-right">
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="center">
+				DMG万事屋
+			</div>
+			<div class="right">
+				<a href="#" class="link close-panel">
+					<i class="icon ion-md-close"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<menu-group-item
+			is-side-panel
+			v-for="item in menuGroup"
+			:title="item.title"
+			:list="item.menuList">
+		</menu-group-item>
+	</div>
+</div>

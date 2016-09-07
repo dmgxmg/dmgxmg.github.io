@@ -1,14 +1,6 @@
-<div class="page navbar-fixed" data-page="resources/music/song-info" v-cloak>
+<div class="page navbar-fixed" data-page="resources/music/music-song-info" v-cloak>
 	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="left">
-				<a href="#" class="link back icon-only">
-            <i class="icon icon-back"></i>
-        </a>
-			</div>
-			<div class="center">{{songinfo.title}}</div>
-			<div class="right"></div>
-		</div>
+		<navbar-inner :title="songinfo.title"></navbar-inner>
 	</div>
 	<div class="page-content">
 		<div class="card">
@@ -18,12 +10,12 @@
 						<img :src="getSongPic()" alt="">
 					</div>
 					<div>
-						<audio :src="getDownloadLink()" v-el:audio autoplay controls loop></audio>
+						<audio :src="songDownloadLink" v-el:audio controls></audio>
 					</div>
 				</div>
 			</div>
 			<div class="card-footer">
-				<a :href="getDownloadLink()" target="__blank" class="link external">下载歌曲</a>
+				<a :href="songDownloadLink" target="__blank" class="link external">下载歌曲</a>
 				<a :href="songinfo.lrclink" target="__blank"  class="link external">下载歌词</a>
 			</div>
 		</div>
