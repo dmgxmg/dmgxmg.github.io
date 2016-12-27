@@ -1,0 +1,53 @@
+<div class="navbar">
+	<div class="navbar-inner">
+	  <div class="left">
+	    <a href="app/home.html" class="link back">
+	      <i class="icon icon-back"></i>
+        <span>返回</span>
+	    </a>
+	  </div>
+	  <div class="center">主题设置</div>
+	  <div class="right"></div>
+	</div>
+</div>
+
+<div class="page" data-page="/app/settings">
+  <div class="page-content">
+    <div class="content-block-title">布局颜色</div>
+    <div class="list-block">
+      <ul>
+        {{#each layoutList}}
+        <li>
+          <label class="label-radio item-content">
+            <input type="radio" name="layout" value="{{key}}" {{isChecked this.key ../layout}}>
+            <div class="item-inner">
+              <div class="item-title">{{label}}</div>
+              <div class="item-after">
+                <div class="bg-{{displayColor}}" style="width: 100px;">&nbsp;</div>
+              </div>
+            </div>
+          </label>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="content-block-title">主题颜色</div>
+    <div class="list-block">
+      <ul>
+        {{#each themeList}}
+        <li>
+          <label class="label-radio item-content">
+            <input type="radio" name="theme" value="{{key}}" {{isChecked this.key ../theme}}>
+            <div class="item-inner">
+              <div class="item-title">{{label}}</div>
+              <div class="item-after">
+                <div class="bg-{{key}}" style="width: 100px;">&nbsp;</div>
+              </div>
+            </div>
+          </label>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

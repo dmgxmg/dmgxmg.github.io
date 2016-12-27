@@ -1,0 +1,144 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left">
+      <a href="lol/hero-list.html" class="link">
+        <i class="icon icon-back"></i>
+        <span>所有英雄</span>
+      </a>
+    </div>
+    <div class="center">
+      {{name}}
+    </div>
+    <div class="right">
+      <a href="lol/hero-search.html" class="link">
+        <i class="fa fa-lg fa-search"></i>
+      </a>
+      <a href="app/settings.html" class="link">
+        <i class="fa fa-lg fa-cog"></i>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="page toolbar-fixed" data-page="/lol/hero-detail">
+  <div class="speed-dial">
+    <a href="#" class="floating-button">
+      <i class="fa fa-lg fa-rocket"></i>
+      <i class="fa fa-lg fa-close"></i>
+    </a>
+    <div class="speed-dial-buttons">
+      <a href="app/donate.html">
+        赏
+      </a>
+      <a href="#" class="scroll-bottom-link">
+        <i class="fa fa-arrow-down"></i>
+      </a>
+      <a href="#" class="scroll-top-link">
+        <i class="fa fa-arrow-up"></i>
+      </a>
+    </div>
+  </div>
+  <div class="page-content">
+    <div class="list-block media-list">
+      <ul>
+        <li>
+          <div class="item-content">
+            <div class="item-media">
+              <img src="http://ossweb-img.qq.com/images/lol/img/champion/{{id}}.png" alt="{{id}}" class="rounded" width="75">
+            </div>
+            <div class="item-inner">
+              <div class="item-title-row">
+                <div class="item-title">{{name}}</div>
+                <div class="item-after">
+                  <table style="width:100%;border-collapse:collapse;font-size:14px;">
+                    <colgroup>
+                      <col width="30%"/>
+                      <col width="50%"/>
+                      <col width="20%"/>
+                    </colgroup>
+                    <tbody>
+                      <tr>
+                        <td>物理</td>
+                        <td>
+                          <div data-progress="{{js 'this.info.attack*10'}}" class="progressbar color-blue"></div>
+                        </td>
+                        <td class="text-center">{{info.attack}}</td>
+                      </tr>
+                      <tr>
+                        <td>魔法</td>
+                        <td>
+                          <div data-progress="{{js 'this.info.magic*10'}}" class="progressbar color-green"></div>
+                        </td>
+                        <td class="text-center">{{info.magic}}</td>
+                      </tr>
+                      <tr>
+                        <td>防御</td>
+                        <td>
+                          <div data-progress="{{js 'this.info.defense*10'}}" class="progressbar color-yellow"></div>
+                        </td>
+                        <td class="text-center">{{info.defense}}</td>
+                      </tr>
+                      <tr>
+                        <td>难度</td>
+                        <td>
+                          <div data-progress="{{js 'this.info.difficulty*10'}}" class="progressbar color-orange"></div>
+                        </td>
+                        <td class="text-center">{{info.difficulty}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="item-subtitle">{{title}}</div>
+              <div class="item-text">
+                {{#each tags}}
+                <div class="chip">
+                  <div class="chip-label">{{lolHeroTag this}}</div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content-block">
+      <div class="row">
+        <div class="tablet-25 col-15"></div>
+        <div class="tablet-50 col-70">
+          <div class="buttons-row">
+            <a href="#" class="button tab-link active" data-tab=".lore-tab">
+              背景故事
+            </a>
+            <a href="#" class="button tab-link" data-tab=".skin-tab">
+              皮肤预览
+            </a>
+          </div>
+        </div>
+        <div class="tablet-25 col-15"></div>
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="tab active lore-tab">
+        <div class="content-block">
+          {{lore}}
+        </div>
+      </div>
+      <div class="tab skin-tab">
+        <div class="content-block">
+          {{#each skins}}
+          <a href="#" data-skin-index="{{@index}}">
+            <h4>{{js "this.name=='default' ? '默认皮肤' : this.name"}}</h4>
+            <img src="http://ossweb-img.qq.com/images/lol/web201310/skin/big{{id}}.jpg" alt="{{name}}">
+          </a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      {{lolHeroLink this.id 'prev'}}
+      {{lolHeroLink this.id 'next'}}
+    </div>
+  </div>
+</div>
