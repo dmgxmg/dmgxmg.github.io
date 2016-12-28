@@ -1,7 +1,4 @@
 define(['app/theme', 'jquery', 'lodash', 'framework7'], function(theme, $, _){
-	Template7.registerHelper('_', function(){
-	    return _;
-	});
 
 	theme.init();
 
